@@ -6,21 +6,18 @@
         id: "id",
         dataType: tableau.dataTypeEnum.string
     }, {
-        id: "mag",
-        alias: "magnitude",
-        dataType: tableau.dataTypeEnum.float
-    }, {
-        id: "title",
-        alias: "title",
+        id: "name",
+        alias: "Name of Star",
         dataType: tableau.dataTypeEnum.string
     }, {
-        id: "location",
-        dataType: tableau.dataTypeEnum.geometry
+        id: "birthYear",
+        alias: "Birth Year of Star",
+        dataType: tableau.dataTypeEnum.dateType
     }];
   
     var tableSchema = {
-        id: "earthquakeFeed",
-        alias: "Earthquakes with magnitude greater than 4.5 in the last seven days",
+        id: "starFeed",
+        alias: "Stars in MovieDB",
         columns: cols
     };
   
@@ -28,17 +25,14 @@
   };
   
   myConnector.getData = function(table, doneCallback) {
-    $.getJSON("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson", function(resp) {
-        var feat = resp.features,
-            tableData = [];
-            
+    $.getJSON("https://josephzheng1998.github.io/TableauWDC/stars.txt", function(resp) {
+
         // Iterate over the JSON object
-        for (var i = 0, len = feat.length; i < len; i++) {
+        for (var i = 0, len = resp.length; i < len; i++) {
             tableData.push({
-                "id": feat[i].id,
-                "mag": feat[i].properties.mag,
-                "title": feat[i].properties.title,
-                "location": feat[i].geometry
+                "id": resp[i].id,
+                "name": resp[i].name,
+                "birthYear": resp[i].birthYear
             });
         }
             
@@ -49,7 +43,7 @@
   
   $(document).ready(function () {
     $("#submitButton").click(function () {
-        tableau.connectionName = "USGS Earthquake Feed";
+        tableau.connectionName = "MovieDB Stars";
         tableau.submit();
     });
   });
