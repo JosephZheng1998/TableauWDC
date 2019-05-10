@@ -7,17 +7,17 @@
         dataType: tableau.dataTypeEnum.string
     }, {
         id: "name",
-        alias: "Name of Star",
+        alias: "Name",
         dataType: tableau.dataTypeEnum.string
     }, {
         id: "birthYear",
-        alias: "Birth Year of Star",
+        alias: "Birth Year",
         dataType: tableau.dataTypeEnum.string
     }];
   
     var tableSchema = {
-        id: "starFeed",
-        alias: "Stars in MovieDB",
+        id: "stars",
+        alias: "stars",
         columns: cols
     };
   
@@ -45,7 +45,7 @@
   
   $(document).ready(function () {
     $("#submitButton").click(function () {
-        tableau.connectionName = "MovieDB Stars";
+        tableau.connectionName = "MovieDB";
         tableau.submit();
     });
   });
