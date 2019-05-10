@@ -12,7 +12,7 @@
     }, {
         id: "birthYear",
         alias: "Birth Year of Star",
-        dataType: tableau.dataTypeEnum.dateType
+        dataType: tableau.dataTypeEnum.date
     }];
   
     var tableSchema = {
