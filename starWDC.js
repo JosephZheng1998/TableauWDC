@@ -27,6 +27,8 @@
   myConnector.getData = function(table, doneCallback) {
     $.getJSON("https://josephzheng1998.github.io/TableauWDC/stars.txt", function(resp) {
 
+        var tableData = [];
+        
         // Iterate over the JSON object
         for (var i = 0, len = resp.length; i < len; i++) {
             tableData.push({
