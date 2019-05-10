@@ -17,5 +17,11 @@ try:
         result = cursor.fetchall_unbuffered()
         with open('stars.txt', 'w') as json_file:
             json.dump(list(result), json_file)
+
+        sql = "SELECT * FROM movies"
+        cursor.execute(sql)
+        result = cursor.fetchall_unbuffered()
+        with open('movies.txt', 'w') as json_file:
+            json.dump(list(result), json_file)
 finally:
     connection.close()
